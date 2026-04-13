@@ -4,9 +4,8 @@
 * **Styling**: Tailwind CSS (Royal Blue & White theme)
 * **Icons**: Lucide React
 
-A Next.js web application prototype based on the Ateneo de Davao University Alumni Hub design sprint. It digitizes the process of requesting and tracking academic documents for alumni.
+A Next.js web application prototype based on the Ateneo de Davao University Alumni Hub design sprint. It digitizes the process of requesting and tracking academic documents for alumni. Created by Jeross P. Aballe
 
-**AI Tools used:** Google Gemini, Claude AI.
 
 ## Features & Perfect Flow Navigation
 1. **Login Screen (`/`)**: Common module login with Student Number and Password. "Sign In" routes to Dashboard.
@@ -29,9 +28,10 @@ A Next.js web application prototype based on the Ateneo de Davao University Alum
    `npm run dev`
 6. **View the App:** Open your web browser (Chrome, Edge, etc.) and navigate to `http://localhost:3000` to view the web application.
 
-**Prompt:**
+**Prompt:** Convert the design to a simple web application using the framework NEXT JS, make sure to include README file. Make sure it has perfect flow. Also, organize my directory for Staff and Alumni. Make sure to follow the color scheme and the design provided in the document. https://docs.google.com/document/d/15MJ0UUTx85zTlSI5XH1hmJZ4inzoYhlPsKg80DnidXA/edit?tab=t.qh2shoz8hbjp (Note: I converted this file document to pdf)
 
-## Screenshots:
+**AI Tools used:** Google Gemini, Claude AI.
+## Screenshots: 
 
 **For Alumni:**
 
