@@ -1,105 +1,136 @@
 import Link from 'next/link';
-import { ArrowLeft, ScanBarcode, CheckCircle2, History } from 'lucide-react';
+import { ArrowLeft, ScanBarcode, CheckCircle2, History, Users, CreditCard, PackageOpen, ShieldCheck, LayoutDashboard, LogOut } from 'lucide-react';
 
-// ── Shared sub-page header pattern ──
-// bg-[#0f172a], flat (no rounded bottom), consistent height, back arrow + title + subtitle
+const navItems = [
+  { href: '/staff/dashboard', icon: LayoutDashboard, label: 'Dashboard', key: 'dashboard' },
+  { href: '/staff/verification', icon: Users, label: 'Review Queue', key: 'verification' },
+  { href: '/staff/document-log', icon: ScanBarcode, label: 'Digital Logger', key: 'document-log' },
+  { href: '/staff/finance', icon: CreditCard, label: 'Finance Audit', key: 'finance' },
+  { href: '/staff/inventory', icon: PackageOpen, label: 'Supply Vault', key: 'inventory' },
+];
+
+function Sidebar({ active }) {
+  return (
+    <div className="w-60 bg-[#1a2b6d] shrink-0 sticky top-0 h-screen flex flex-col shadow-xl z-50">
+      <div className="p-6 border-b border-white/10 flex items-center space-x-3">
+        <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center shrink-0">
+          <ShieldCheck size={20} className="text-white" />
+        </div>
+        <div>
+          <h2 className="text-white font-bold text-base leading-tight">Registrar Hub</h2>
+          <p className="text-blue-300 text-xs mt-0.5">AdDU Portal</p>
+        </div>
+      </div>
+      <div className="px-6 py-4 bg-white/5 border-b border-white/5">
+        <p className="text-xs text-blue-200 uppercase tracking-wider font-bold mb-1">Logged In As</p>
+        <div className="flex items-center space-x-2">
+          <p className="text-sm font-bold text-white">Registrar Staff</p>
+          <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
+        </div>
+      </div>
+      <nav className="flex-1 p-4 space-y-1 overflow-y-auto">
+        {navItems.map(({ href, icon: Icon, label, key }) => (
+          <Link key={key} href={href}
+            className={`flex items-center space-x-3 px-4 py-3 rounded-xl transition font-medium text-sm ${
+              active === key ? 'bg-white/15 text-white' : 'text-blue-200 hover:bg-white/10 hover:text-white'
+            }`}>
+            <Icon size={18} /><span>{label}</span>
+          </Link>
+        ))}
+      </nav>
+      <div className="p-4 border-t border-white/10">
+        <Link href="/" className="flex w-full items-center space-x-3 text-red-300 hover:text-red-100 hover:bg-red-500/10 px-4 py-3 rounded-xl transition font-medium text-sm">
+          <LogOut size={18} /><span>Sign Out</span>
+        </Link>
+      </div>
+    </div>
+  );
+}
 
 export default function DocumentLogger() {
   return (
-    <div className="min-h-screen bg-[#f0f4f8] pb-10">
+    <div className="flex min-h-screen bg-[#f0f2f5]">
+      <Sidebar active="document-log" />
 
-      {/* ── HEADER ── */}
-      <div className="bg-[#0f172a] px-5 pt-10 pb-5 shadow-xl">
-        <div className="flex items-center space-x-4">
-          <Link
-            href="/staff/dashboard"
-            className="w-9 h-9 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center text-white hover:bg-white/20 transition shrink-0"
-          >
-            <ArrowLeft size={18} />
-          </Link>
+      <div className="flex-1 flex flex-col h-screen overflow-hidden">
+        {/* Sticky Top Bar */}
+        <div className="sticky top-0 bg-white/90 backdrop-blur-md px-10 py-5 border-b border-slate-200 z-40 shadow-sm flex justify-between items-center shrink-0">
           <div>
-            <p className="text-[10px] font-black text-blue-400 uppercase tracking-[3px]">Registrar Staff</p>
-            <h1 className="text-lg font-black text-white leading-tight">Digital Logger</h1>
+            <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Staff / Digital Logger</p>
+            <h1 className="text-xl font-bold text-slate-800">Scan & Sync Records</h1>
           </div>
-        </div>
-      </div>
-
-      {/* ── BODY ── */}
-      <div className="px-5 pt-5 space-y-5">
-
-        {/* Scanner Card */}
-        <div className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden">
-          {/* Animated scan bar */}
-          <div className="h-1 w-full bg-gradient-to-r from-indigo-400 via-blue-500 to-indigo-400 animate-pulse" />
-          <div className="p-6 text-center">
-            <div className="w-20 h-20 bg-indigo-50 border border-indigo-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-              <ScanBarcode size={38} className="text-indigo-600" />
-            </div>
-            <h2 className="text-base font-bold text-slate-800">Ready to Scan</h2>
-            <p className="text-xs text-slate-500 mt-1 mb-5 px-4 leading-relaxed">
-              Position the physical document barcode within the scanner range to sync records automatically.
-            </p>
-            <button className="w-full py-3 bg-indigo-600 hover:bg-indigo-700 transition rounded-xl font-bold text-white text-sm shadow-md shadow-indigo-600/20">
-              Activate Scanner
-            </button>
-          </div>
-        </div>
-
-        {/* Filter Tabs */}
-        <div className="flex bg-white rounded-xl border border-slate-100 shadow-sm p-1 space-x-1">
-          {['All Logs', 'Pending Release', 'Released'].map((tab, i) => (
-            <button
-              key={tab}
-              className={`flex-1 py-2 rounded-lg text-xs font-bold transition ${
-                i === 0 ? 'bg-[#0f172a] text-white shadow' : 'text-slate-500 hover:text-slate-700'
-              }`}
-            >
-              {tab}
-            </button>
-          ))}
-        </div>
-
-        {/* Recent Scans */}
-        <div>
-          <div className="flex items-center space-x-2 mb-3">
-            <History size={14} className="text-slate-400" />
-            <p className="text-[10px] font-black text-slate-400 uppercase tracking-[3px]">Recently Logged</p>
-          </div>
-
-          <div className="space-y-3">
-            {[
-              { id: 'REQ-1001', doc: 'Transcript of Records', time: '10 mins ago', status: 'URGENT', statusColor: 'bg-amber-50 text-amber-600 border-amber-100' },
-              { id: 'REQ-0998', doc: 'Diploma Copy', time: '1 hour ago', status: 'LOGGED', statusColor: 'bg-blue-50 text-blue-600 border-blue-100' },
-              { id: 'REQ-0990', doc: 'Certificate of Enrollment', time: 'Yesterday', status: 'RELEASED', statusColor: 'bg-emerald-50 text-emerald-600 border-emerald-100' },
-            ].map((item) => (
-              <div
-                key={item.id}
-                className="bg-white rounded-2xl border border-slate-100 shadow-sm p-4 flex items-center justify-between"
-              >
-                <div className="flex items-center space-x-3">
-                  <div className="w-9 h-9 rounded-xl bg-emerald-50 flex items-center justify-center shrink-0">
-                    <CheckCircle2 size={18} className="text-emerald-500" />
-                  </div>
-                  <div>
-                    <p className="text-sm font-bold text-slate-800">{item.id}</p>
-                    <p className="text-[10px] text-slate-500 font-medium">{item.doc}</p>
-                  </div>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <span className={`text-[9px] font-black px-2 py-0.5 rounded-md border uppercase ${item.statusColor}`}>
-                    {item.status}
-                  </span>
-                  <p className="text-[10px] text-slate-400 font-bold">{item.time}</p>
-                </div>
-              </div>
+          <div className="flex bg-slate-100 rounded-xl p-1 space-x-1 shrink-0">
+            {['All Logs', 'Pending', 'Released'].map((tab, i) => (
+              <button key={tab} className={`px-5 py-2.5 rounded-lg text-sm font-bold transition ${i === 0 ? 'bg-white text-[#1a2b6d] shadow' : 'text-slate-500 hover:text-slate-700'}`}>
+                {tab}
+              </button>
             ))}
           </div>
-
-          <p className="text-[10px] text-slate-400 text-center mt-4 font-medium">
-            End of document log for April 12, 2026
-          </p>
         </div>
 
+        <div className="flex-1 overflow-y-auto">
+          <main className="max-w-5xl mx-auto w-full px-10 py-8">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+              {/* Left: scanner (1/3) */}
+              <div className="lg:col-span-1">
+                <div className="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden sticky top-8">
+                  <div className="h-1.5 w-full bg-[#1a2b6d]" />
+                  <div className="p-8 text-center">
+                    <div className="w-24 h-24 bg-[#1a2b6d]/8 border-2 border-[#1a2b6d]/15 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                      <ScanBarcode size={48} className="text-[#1a2b6d]" />
+                    </div>
+                    <h2 className="text-lg font-bold text-slate-800 mb-2">Ready to Scan</h2>
+                    <p className="text-sm text-slate-500 mb-8 leading-relaxed">
+                      Position the physical document barcode within the scanner range to sync records automatically.
+                    </p>
+                    <button className="w-full py-4 bg-[#1a2b6d] hover:bg-[#16266b] transition rounded-2xl font-bold text-white text-base shadow-lg">
+                      Activate Scanner
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right: log list (2/3) */}
+              <div className="lg:col-span-2 space-y-4">
+                <div className="flex items-center space-x-2 mb-2">
+                  <History size={18} className="text-slate-400" />
+                  <p className="text-sm font-bold text-slate-400 uppercase tracking-widest">Recently Logged</p>
+                </div>
+
+                <div className="space-y-4">
+                  {[
+                    { id: 'REQ-1001', doc: 'Transcript of Records', name: 'De Los Reyes, Juan A.', detail: 'ID: 19-4502 · BS CS', time: 'Today, 10:45 AM', barcode: 'BC-990-TR', status: 'URGENT', statusColor: 'bg-red-50 text-red-700 border-red-200' },
+                    { id: 'REQ-0998', doc: 'Diploma Copy', name: 'Santos, Maria Clara', detail: 'ID: 20-1192 · AB POS', time: 'Today, 09:12 AM', barcode: 'BC-412-DP', status: 'LOGGED', statusColor: 'bg-[#1a2b6d]/8 text-[#1a2b6d] border-[#1a2b6d]/20' },
+                    { id: 'REQ-0990', doc: 'Certificate of Enrollment', name: 'Aguinaldo, Emilio Q.', detail: 'ID: 21-0083 · BS MGT', time: 'Yesterday, 04:30 PM', barcode: 'BC-182-CE', status: 'RELEASED', statusColor: 'bg-emerald-50 text-emerald-700 border-emerald-200' },
+                  ].map((item) => (
+                    <div key={item.id} className="bg-white rounded-3xl border border-slate-200 shadow-sm p-6 flex items-center justify-between gap-4">
+                      <div className="flex items-center space-x-5 min-w-0">
+                        <div className="w-14 h-14 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center shrink-0">
+                          <CheckCircle2 size={28} className="text-emerald-500" />
+                        </div>
+                        <div className="min-w-0">
+                          <div className="flex items-center space-x-3 mb-1">
+                            <p className="text-xs font-black text-slate-400 uppercase tracking-wider">{item.id}</p>
+                            <span className={`text-[10px] font-black px-2.5 py-0.5 rounded-lg border uppercase tracking-wide ${item.statusColor}`}>{item.status}</span>
+                          </div>
+                          <p className="text-base font-bold text-slate-800">{item.doc}</p>
+                          <p className="text-sm text-slate-500 mt-0.5">{item.name} <span className="text-slate-300 mx-1">•</span> {item.detail}</p>
+                        </div>
+                      </div>
+                      <div className="text-right shrink-0">
+                        <p className="text-sm text-slate-400">{item.time}</p>
+                        <p className="text-xs font-bold text-[#1a2b6d] mt-1 bg-[#1a2b6d]/5 px-2 py-1 rounded-md inline-block">{item.barcode}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <p className="text-sm text-slate-400 text-center mt-8">End of document log for April 13, 2026</p>
+              </div>
+
+            </div>
+          </main>
+        </div>
       </div>
     </div>
   );

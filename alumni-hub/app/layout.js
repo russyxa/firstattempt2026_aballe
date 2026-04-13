@@ -8,9 +8,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="bg-gray-100 flex justify-center min-h-screen">
-        {/* Mobile view constraint to match the design */}
-        <div className="w-full max-w-md bg-white min-h-screen shadow-2xl relative overflow-x-hidden">
+      <body className="bg-[#f0f2f5] min-h-screen font-sans text-slate-800">
+        {/* Removed the max-w-md constraint so the desktop UI can expand properly */}
+        <div className="w-full min-h-screen relative overflow-x-hidden">
           {children}
         </div>
       </body>

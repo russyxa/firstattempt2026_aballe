@@ -1,176 +1,207 @@
 import Link from 'next/link';
-import { ArrowLeft, MapPin, Mail, Phone, Calendar, User, GraduationCap, Award, Download, ShieldCheck, LogOut } from 'lucide-react';
+import {
+  ArrowLeft, MapPin, Mail, Phone, Calendar,
+  User, GraduationCap, Award, Download, ShieldCheck, Fingerprint, Home, FileText, Clock, LogOut
+} from 'lucide-react';
 
-export default function Profile() {
+export default function AlumniProfile() {
   return (
-    <div className="min-h-screen bg-gray-50 pb-16">
-      {/* Top Navigation */}
-      <div className="bg-white p-4 border-b border-gray-200 sticky top-0 z-10 flex items-center justify-center shadow-sm">
-        <div className="flex items-center justify-between max-w-3xl w-full px-2">
-          <div className="flex items-center space-x-4">
-            <Link href="/alumni/dashboard" className="text-gray-400 hover:text-gray-600 transition">
-              <ArrowLeft size={24} />
-            </Link>
-            <h1 className="text-lg font-bold text-blue-900">My Profile</h1>
+    <div className="flex min-h-screen bg-[#f0f2f5]">
+
+      {/* ── STICKY SIDEBAR ── */}
+      <div className="w-60 bg-[#1a2b6d] shrink-0 sticky top-0 h-screen flex flex-col shadow-xl z-50">
+        <div className="p-6 border-b border-white/10 flex items-center space-x-3">
+          <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center shrink-0">
+            <GraduationCap size={20} className="text-blue-300" />
           </div>
-          
-          {/* SIGN OUT BUTTON ADDED HERE */}
-          <Link href="/" className="flex items-center space-x-2 text-red-500 hover:text-red-700 bg-white hover:bg-red-50 px-3 py-2 rounded-xl transition font-semibold border border-transparent hover:border-red-100">
-            <LogOut size={18} />
-            <span className="text-sm hidden sm:block">Sign Out</span>
+          <div>
+            <h2 className="text-white font-bold text-base leading-tight">Alumni Hub</h2>
+            <p className="text-blue-300 text-xs mt-0.5">AdDU Portal</p>
+          </div>
+        </div>
+        <div className="px-6 py-4 bg-white/5 border-b border-white/5">
+          <p className="text-xs text-blue-200 uppercase tracking-wider font-bold mb-1">Logged In As</p>
+          <p className="text-sm font-bold text-white">Jeross P. Aballe</p>
+        </div>
+        <nav className="flex-1 p-4 space-y-1 overflow-y-auto">
+          <Link href="/alumni/dashboard" className="flex items-center space-x-3 text-blue-200 hover:text-white hover:bg-white/10 px-4 py-3 rounded-xl transition font-medium text-sm">
+            <Home size={18} /><span>Dashboard</span>
+          </Link>
+          <Link href="/alumni/profile" className="flex items-center space-x-3 text-white bg-white/15 px-4 py-3 rounded-xl transition font-medium text-sm">
+            <User size={18} /><span>Profile</span>
+          </Link>
+          <Link href="/alumni/request" className="flex items-center space-x-3 text-blue-200 hover:text-white hover:bg-white/10 px-4 py-3 rounded-xl transition font-medium text-sm">
+            <FileText size={18} /><span>Request Docs</span>
+          </Link>
+          <Link href="/alumni/tracking" className="flex items-center space-x-3 text-blue-200 hover:text-white hover:bg-white/10 px-4 py-3 rounded-xl transition font-medium text-sm">
+            <Clock size={18} /><span>Tracking</span>
+          </Link>
+        </nav>
+        <div className="p-4 border-t border-white/10">
+          <Link href="/" className="flex w-full items-center space-x-3 text-red-300 hover:text-red-100 hover:bg-red-500/10 px-4 py-3 rounded-xl transition font-medium text-sm">
+            <LogOut size={18} /><span>Sign Out</span>
           </Link>
         </div>
       </div>
 
-      <div className="max-w-3xl mx-auto px-4 mt-8">
-        {/* Profile Header Hero Card */}
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden mb-6">
-          {/* Cover Photo / Banner */}
-          <div className="h-32 bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900 relative flex items-center justify-center overflow-hidden">
-             <div className="absolute top-0 right-0 p-8 opacity-10">
-               <ShieldCheck size={120} />
-             </div>
+      {/* ── MAIN CONTENT ── */}
+      <div className="flex-1 flex flex-col">
+        {/* Sticky Top Bar */}
+        <div className="sticky top-0 bg-white/90 backdrop-blur-md px-10 py-5 border-b border-slate-200 z-40 shadow-sm flex items-center space-x-4">
+          <Link href="/alumni/dashboard" className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-slate-200 transition shrink-0">
+            <ArrowLeft size={20} />
+          </Link>
+          <div>
+            <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Alumni / Profile</p>
+            <h1 className="text-xl font-bold text-slate-800">My Academic Passport</h1>
           </div>
-          
-          <div className="px-6 pb-6 relative">
-            <div className="flex justify-between items-end mb-4">
-              {/* Avatar overlapping the banner */}
-              <div className="-mt-12 w-24 h-24 bg-white rounded-full p-1 shadow-sm relative z-10">
-                <div className="w-full h-full bg-gray-100 rounded-full border border-gray-200 flex items-center justify-center">
-                  <User size={40} className="text-gray-400" />
-                </div>
-                <div className="absolute bottom-0 right-0 bg-green-500 w-6 h-6 rounded-full border-2 border-white flex items-center justify-center">
-                  <ShieldCheck size={12} className="text-white" />
-                </div>
-              </div>
+        </div>
 
-              {/* Status Badge */}
-              <span className="px-3 py-1 bg-green-50 text-green-700 text-xs font-bold rounded-full border border-green-200 flex items-center shadow-sm">
-                <ShieldCheck size={14} className="mr-1.5" />
-                Verified Alumni
-              </span>
-            </div>
+        {/* Layout Split: 2/3 + 1/3 Grid Container */}
+        <div className="max-w-5xl mx-auto w-full px-10 py-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             
-            <div>
-              <h2 className="text-2xl font-bold text-gray-900">Jane Doe</h2>
-              <p className="text-blue-600 font-bold text-sm mt-0.5 tracking-wide">Student No: 2018-02345</p>
-            </div>
-          </div>
-        </div>
+            {/* Left Column (2/3) */}
+            <div className="lg:col-span-2 space-y-6">
+              {/* Profile Hero Card */}
+              <div className="bg-white rounded-3xl border border-slate-200 shadow-sm p-8">
+                <div className="flex items-center space-x-6 mb-8">
+                  <div className="w-24 h-24 rounded-2xl bg-[#1a237e]/10 border-2 border-[#1a237e]/20 flex items-center justify-center shrink-0 relative">
+                    <User size={40} className="text-[#1a237e]" />
+                    <div className="absolute -bottom-2 -right-2 bg-emerald-500 w-8 h-8 rounded-full border-4 border-white flex items-center justify-center">
+                      <ShieldCheck size={16} className="text-white" />
+                    </div>
+                  </div>
+                  <div>
+                    <h2 className="text-2xl font-bold text-slate-900">Jeross P. Aballe</h2>
+                    <p className="text-sm text-slate-500 mt-1">Student No. 20180234</p>
+                    <div className="flex items-center space-x-2 mt-2 bg-emerald-50 px-3 py-1.5 rounded-lg w-max">
+                      <ShieldCheck size={14} className="text-emerald-500" />
+                      <p className="text-xs text-emerald-700 font-bold">Verified by Registrar</p>
+                    </div>
+                  </div>
+                </div>
 
-        {/* Details Section (2-Column Grid for Web) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          
-          {/* Academic Information */}
-          <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 hover:border-blue-200 transition">
-            <h3 className="text-sm font-bold text-gray-800 mb-4 flex items-center border-b border-gray-100 pb-3">
-              <div className="p-1.5 bg-blue-50 text-blue-900 rounded-md mr-2">
-                <GraduationCap size={16} />
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-6 border-t border-slate-100">
+                  <div className="flex items-center space-x-4">
+                    <div className="w-12 h-12 rounded-xl bg-[#1a237e]/8 flex items-center justify-center shrink-0">
+                      <GraduationCap size={22} className="text-[#1a237e]" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Degree</p>
+                      <p className="text-sm font-bold text-slate-800">BS in Information Technology</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-4">
+                    <div className="w-12 h-12 rounded-xl bg-purple-50 flex items-center justify-center shrink-0">
+                      <Calendar size={22} className="text-purple-500" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Graduated</p>
+                      <p className="text-sm font-bold text-slate-800">March 2028</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-4">
+                    <div className="w-12 h-12 rounded-xl bg-amber-50 flex items-center justify-center shrink-0">
+                      <Award size={22} className="text-amber-500" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Honors</p>
+                      <p className="text-sm font-bold text-slate-800">Cum Laude</p>
+                    </div>
+                  </div>
+                </div>
               </div>
-              Academic Record
-            </h3>
-            <div className="space-y-4">
-              <div>
-                <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Degree Program</p>
-                <p className="font-semibold text-sm text-gray-800">Bachelor of Science in Computer Science</p>
+
+              {/* Contact Information */}
+              <div className="bg-white rounded-3xl border border-slate-200 shadow-sm p-8">
+                <p className="text-lg font-bold text-slate-800 mb-6">Contact Information</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="flex items-center space-x-4">
+                    <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center shrink-0">
+                      <Mail size={22} className="text-blue-500" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Email</p>
+                      <p className="text-sm font-bold text-slate-800">jaballe@addu.edu.ph</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-4">
+                    <div className="w-12 h-12 rounded-xl bg-emerald-50 flex items-center justify-center shrink-0">
+                      <Phone size={22} className="text-emerald-500" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Phone</p>
+                      <p className="text-sm font-bold text-slate-800">+63 912 345 6789</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-4 md:col-span-2">
+                    <div className="w-12 h-12 rounded-xl bg-red-50 flex items-center justify-center shrink-0">
+                      <MapPin size={22} className="text-red-400" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Location</p>
+                      <p className="text-sm font-bold text-slate-800">Davao City, Philippines</p>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Year Graduated</p>
-                  <p className="font-semibold text-sm text-gray-800">March 2022</p>
+            </div>
+
+            {/* Right Column (1/3) */}
+            <div className="lg:col-span-1 space-y-6">
+              
+              {/* Security Note */}
+              <div className="bg-[#1a237e]/5 border border-[#1a237e]/15 rounded-3xl p-6 flex flex-col space-y-4">
+                <div className="w-14 h-14 rounded-2xl bg-[#1a237e]/10 flex items-center justify-center shrink-0">
+                  <ShieldCheck size={28} className="text-[#1a237e]" />
                 </div>
                 <div>
-                  <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1 flex items-center">
-                    <Award size={12} className="mr-1 text-yellow-500" /> Honors
+                  <p className="text-base font-bold text-[#1a237e]">Ateneo de Davao University</p>
+                  <p className="text-sm text-[#1a237e]/70 mt-2 leading-relaxed">
+                    This credential is cryptographically secured and synced with the AdDU Registrar's Office. Share it instantly with employers for verification.
                   </p>
-                  <p className="font-semibold text-sm text-gray-800">Cum Laude</p>
                 </div>
               </div>
-            </div>
-          </div>
 
-          {/* Personal Details */}
-          <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 hover:border-purple-200 transition">
-            <h3 className="text-sm font-bold text-gray-800 mb-4 flex items-center border-b border-gray-100 pb-3">
-              <div className="p-1.5 bg-purple-50 text-purple-600 rounded-md mr-2">
-                <User size={16} />
+              {/* Actions */}
+              <div className="space-y-3">
+                <button
+                  className="w-full py-4 font-bold text-white text-base flex items-center justify-center space-x-3 rounded-2xl shadow-lg transition hover:opacity-90"
+                  style={{ background: 'linear-gradient(135deg, #1a237e 0%, #283593 50%, #c8b400 100%)' }}
+                >
+                  <Download size={20} />
+                  <span>Share Credential</span>
+                </button>
+
+                <button className="w-full py-4 bg-white border border-slate-200 text-slate-600 font-bold text-base rounded-2xl flex items-center justify-center space-x-3 hover:bg-slate-50 transition shadow-sm">
+                  <Download size={20} />
+                  <span>Download PDF</span>
+                </button>
               </div>
-              Personal Details
-            </h3>
-            <div className="space-y-4">
-              <div>
-                <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Full Legal Name</p>
-                <p className="font-semibold text-sm text-gray-800">Jane Marie P. Doe</p>
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Date of Birth</p>
-                  <p className="font-semibold text-sm text-gray-800 flex items-center">
-                    <Calendar size={14} className="mr-1.5 text-gray-400" /> Jan 15, 2000
-                  </p>
+
+              {/* Quick Login Settings */}
+              <div className="bg-white rounded-3xl border border-slate-200 shadow-sm p-6">
+                <p className="text-base font-bold text-slate-800 mb-4">Security</p>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center space-x-4">
+                    <div className="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center shrink-0">
+                      <Fingerprint size={24} className="text-slate-500" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-bold text-slate-800">Biometric Login</p>
+                      <p className="text-xs text-slate-500 mt-1">Enable for faster access</p>
+                    </div>
+                  </div>
+                  <button className="px-5 py-2.5 bg-[#1a237e] hover:bg-[#283593] transition text-white text-sm font-bold rounded-xl shadow">
+                    Enable
+                  </button>
                 </div>
-                <div>
-                  <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Civil Status</p>
-                  <p className="font-semibold text-sm text-gray-800">Single</p>
-                </div>
               </div>
-            </div>
-          </div>
 
-          {/* Contact Information */}
-          <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 hover:border-green-200 transition">
-            <h3 className="text-sm font-bold text-gray-800 mb-4 flex items-center border-b border-gray-100 pb-3">
-              <div className="p-1.5 bg-green-50 text-green-600 rounded-md mr-2">
-                <Phone size={16} />
-              </div>
-              Contact Information
-            </h3>
-            <div className="space-y-4">
-              <div>
-                <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Primary Email</p>
-                <p className="font-semibold text-sm text-gray-800 flex items-center">
-                  <Mail size={14} className="mr-1.5 text-gray-400" /> jane.doe@addu.edu.ph
-                </p>
-              </div>
-              <div>
-                <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Mobile Number</p>
-                <p className="font-semibold text-sm text-gray-800 flex items-center">
-                  <Phone size={14} className="mr-1.5 text-gray-400" /> +63 912 345 6789
-                </p>
-              </div>
             </div>
           </div>
-
-          {/* Address */}
-          <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 hover:border-orange-200 transition">
-            <h3 className="text-sm font-bold text-gray-800 mb-4 flex items-center border-b border-gray-100 pb-3">
-              <div className="p-1.5 bg-orange-50 text-orange-600 rounded-md mr-2">
-                <MapPin size={16} />
-              </div>
-              Current Address
-            </h3>
-            <div className="space-y-4 h-full">
-              <div>
-                <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Residential Address</p>
-                <p className="font-semibold text-sm text-gray-800 leading-relaxed">
-                  123 Roxas Avenue, <br/>
-                  Brgy. 34-D, Poblacion District, <br/>
-                  Davao City, 8000, Philippines
-                </p>
-              </div>
-            </div>
-          </div>
-          
         </div>
-
-        {/* Action Buttons */}
-        <div className="mt-6 flex justify-end">
-          <button className="flex items-center justify-center space-x-2 bg-blue-900 text-white px-6 py-3 rounded-xl font-bold shadow-sm hover:bg-blue-800 transition w-full md:w-auto">
-            <Download size={18} />
-            <span>Download Verified Credentials</span>
-          </button>
-        </div>
-
       </div>
     </div>
   );

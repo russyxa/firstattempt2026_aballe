@@ -1,12 +1,8 @@
-**Title:** Aballe  
-## Tech Stack
+## Aballe 
+**Module:** Module 1: Document Request
 * **Framework**: Next.js (App Router)
 * **Styling**: Tailwind CSS (Royal Blue & White theme)
 * **Icons**: Lucide React
-
-**Module:** Module 1: Document Request
-
-# AdDU Alumni Hub - Document Request Portal
 
 A Next.js web application prototype based on the Ateneo de Davao University Alumni Hub design sprint. It digitizes the process of requesting and tracking academic documents for alumni.
 
@@ -24,7 +20,7 @@ A Next.js web application prototype based on the Ateneo de Davao University Alum
 **Installation:** *(A detailed instruction on how you can replicate your repo and run it in a different computer)*
 1. **Prerequisites:** Ensure you have Node.js (version 20.9.0 or higher) and Git installed on your computer.
 2. **Clone the Repository:** Open your terminal or command prompt and run:
-   `git clone <INSERT_YOUR_GITHUB_REPO_LINK_HERE>`
+   `git clone https://russyxa.github.io/firstattempt2026_aballe/`
 3. **Navigate to the Directory:** Change your current directory to the project folder:
    `cd alumni-hub`
 4. **Install Dependencies:** Install all the required packages (Next.js, Tailwind CSS, Lucide Icons) by running:
@@ -35,9 +31,47 @@ A Next.js web application prototype based on the Ateneo de Davao University Alum
 
 **Prompt:**
 
-**Screenshots:**
-    **1. Login Screen**
-    **2. Dashboard (Quick Actions)**
-    **3. My Profile**
-    **4. Document Request**
-    **5. Process & Track Documents**
+## Screenshots:
+
+**For Alumni:**
+
+1. Login Screen
+![alt text](image.png)
+2. Dashboard (Quick Actions)
+![alt text](image-1.png)
+3. My Profile
+![alt text](image-2.png)
+4. Document Request
+![alt text](image-3.png)
+![alt text](image-4.png)
+![alt text](image-5.png)
+![alt text](image-6.png)
+5. Process & Track Documents
+![alt text](image-7.png)
+![alt text](image-8.png)
+![alt text](image-9.png)
+![alt text](image-10.png)
+![alt text](image-11.png)
+![alt text](image-12.png)
+
+**For Staff:**
+
+1. Login Screen
+![alt text](image-13.png)
+   
+2. Dashboard
+![alt text](image-14.png)
+
+3. Review Queue
+![alt text](image-15.png)
+![alt text](image-16.png)
+![alt text](image-17.png)
+
+4. Digital Logger
+![alt text](image-18.png)
+
+5. Finance Audit
+![alt text](image-19.png)
+
+6. Supply Vault 
+![alt text](image-20.png)
