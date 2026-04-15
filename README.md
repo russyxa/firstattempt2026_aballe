@@ -19,7 +19,7 @@ A Next.js web application prototype based on the Ateneo de Davao University Alum
 **Installation:** *(A detailed instruction on how you can replicate your repo and run it in a different computer)*
 1. **Prerequisites:** Ensure you have Node.js (version 20.9.0 or higher) and Git installed on your computer.
 2. **Clone the Repository:** Open your terminal or command prompt and run:
-   `git clone https://russyxa.github.io/firstattempt2026_aballe/`
+   `git clone https://github.com/russyxa/firstattempt2026_aballe`
 3. **Navigate to the Directory:** Change your current directory to the project folder:
    `cd alumni-hub`
 4. **Install Dependencies:** Install all the required packages (Next.js, Tailwind CSS, Lucide Icons) by running:
