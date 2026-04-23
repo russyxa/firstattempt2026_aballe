@@ -21,7 +21,7 @@ export default function Login() {
           {/* Even BIGGER Logo */}
           <div className="mb-0">
             <img 
-              src="/knightslogo.png" 
+              src="/knightslogo-512.png" 
               alt="AdDU Knight Logo" 
               className="w-96 h-auto object-contain brightness-0 invert" 
             />
@@ -50,7 +50,7 @@ export default function Login() {
           {/* Mobile Header (Only visible on small screens) */}
           <div className="lg:hidden flex flex-col items-center mb-8">
             <img 
-              src="/knightslogo.png" 
+              src="/knightslogo-512.png" 
               alt="AdDU Knight Logo" 
               className="w-24 h-auto object-contain mb-4" 
             />
