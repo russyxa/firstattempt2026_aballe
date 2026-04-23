@@ -2,9 +2,8 @@ const CACHE_NAME = 'knights-hub-v1';
 const ASSETS_TO_CACHE = [
   '/',
   '/manifest.json',
-  '/knightslogo-512.png', // <-- Update this filename!
-  '/knightslogo-192.png' // <-- Add this line!
-  // Add other static assets or CSS files here
+  '/knightslogo-512.png', 
+  '/knightslogo-192.png' 
 ];
 
 // Install Event: Caching the "Shell" of the app
